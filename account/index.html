@@ -21,9 +21,15 @@ layout: default
                           </div>
                       </div>
                   </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="name">Environment (copy and import into Postman):</label>
+                              <pre><code id="environment"></code></pre>
+                          </div>
+                      </div>
+                  </div>
               </form>
-
-              <pre><code id="environment"></code></pre>
 
               <script>
                 if(getUrlVar('token')){
