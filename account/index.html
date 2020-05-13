@@ -17,7 +17,7 @@ layout: default
                       <div class="col-md-12">
                           <div class="form-group">
                               <label for="name">Your API Token:</label>
-                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 250px">
+                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 5000px">
                           </div>
                       </div>
                   </div>
@@ -43,13 +43,13 @@ layout: default
                   environment['name'] = 'Union Fashion API';
                   environment['values'] = [];
 
-                  let value = {};
+                  value = {};
                   value['key'] = 'baseUrl';
                   value['value'] = 'https://api.union.fashion';
                   value['enabled'] = true;
                   environment['values'].push(value);
 
-                  let value = {};
+                  svalue = {};
                   value['key'] = 'api-key';
                   value['value'] = token;
                   value['enabled'] = true;
