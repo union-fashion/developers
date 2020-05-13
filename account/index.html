@@ -13,24 +13,22 @@ layout: default
 
               <div class="row">
 
-                <form id="contact-form" class="contact-form">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="name">Your API Token:</label>
-                                <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 50%">
-                            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Your API Token:</label>
+                            <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 50%">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="name">Environment (copy and import into Postman):</label>
-                                <pre><code id="environment" style="width: 100%;"></code></pre>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Environment (copy and import into Postman):</label>
+                            <pre><code id="environment" style="width: 50s%;"></code></pre>
                         </div>
                     </div>
-                </form>
+                </div>
 
                 <script>
                   if(getUrlVar('token')){
