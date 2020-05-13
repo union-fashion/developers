@@ -16,16 +16,41 @@ layout: default
                   <div class="row">
                       <div class="col-md-12">
                           <div class="form-group">
-                              <label for="name">Token:</label>
-                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 90%">
+                              <label for="name">Your API Token:</label>
+                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 250px">
                           </div>
                       </div>
                   </div>
               </form>
 
+              <pre><code id="environment"></code></pre>
+
               <script>
                 if(getUrlVar('token')){
-                  document.getElementById('token').value = getUrlVar('token');
+
+                  let token = getUrlVar('token');
+
+                  document.getElementById('token').value = token;
+
+                  let environment = {};
+                  environment['id'] = 'dcbd4dbe-7000-402c-afeb-07a6070f8481';
+                  environment['name'] = 'Union Fashion API';
+                  environment['values'] = [];
+
+                  let value = {};
+                  value['key'] = 'baseUrl';
+                  value['value'] = 'https://api.union.fashion';
+                  value['enabled'] = true;
+                  environment['values'].push(value);
+
+                  let value = {};
+                  value['key'] = 'api-key';
+                  value['value'] = token;
+                  value['enabled'] = true;
+                  environment['values'].push(value);
+
+                  document.getElementById('environment').value = JSON.stringify(environment);
+
                 }
               </script>
 
