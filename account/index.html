@@ -17,7 +17,7 @@ layout: default
                       <div class="col-md-12">
                           <div class="form-group">
                               <label for="name">Your API Token:</label>
-                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 500px">
+                              <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 100%">
                           </div>
                       </div>
                   </div>
@@ -25,7 +25,7 @@ layout: default
                       <div class="col-md-12">
                           <div class="form-group">
                               <label for="name">Environment (copy and import into Postman):</label>
-                              <pre><code id="environment"></code></pre>
+                              <pre><code id="environment" style="width: 100%;"></code></pre>
                           </div>
                       </div>
                   </div>
@@ -55,7 +55,7 @@ layout: default
                   value['enabled'] = true;
                   environment['values'].push(value);
 
-                  document.getElementById('environment').innerHTML = JSON.stringify(environment);
+                  document.getElementById('environment').innerHTML = JSON.stringify(environment, null, 2);
 
                 }
               </script>
