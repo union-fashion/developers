@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<section class="section-padding pt-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+           <article class="post-grid mb-5">
+              <h2 class="mb-1 mt-2 post-title"><a href="#">Developer Account</a></h2>
+              <p>We have taken your authorizaton token and turned into the token you can use for making calls to the Union Fashon API.</p>
+           </article>
+            <div class="row">
+
+              <script>
+                if(getUrlVar('token')){
+                  document.getElementById('token').value = getUrlVar('token');
+                }
+              </script>
+
+              <form id="contact-form" class="contact-form">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="name">Token:</label>
+                              <input class="form-control form-control-name" name="token" id="token" type="text">
+                          </div>
+                      </div>
+                  </div>
+              </form>
+
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="sidebar sidebar-right">
+               <div class="sidebar-wrap mt-5 mt-lg-0">
+
+                  <div class="sidebar-widget mb-5 ">
+                     <h4 class="text-center widget-title">Platform</h4>
+                     <div class="media border-bottom py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Home</span>
+                           <h4 ><a href="#">The default README for all APIs.</a></h4>
+                        </div>
+                     </div>
+                     <div class="media border-bottom py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Infrastructure</span>
+                           <h4 ><a href="#">Explore infrastructure collections.</a></h4>
+                        </div>
+                     </div>
+                     <div class="media py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Operations</span>
+                           <h4 ><a href="#">Explore operational collections.</a></h4>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
