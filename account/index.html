@@ -12,12 +12,6 @@ layout: default
            </article>
             <div class="row">
 
-              <script>
-                if(getUrlVar('token')){
-                  document.getElementById('token').value = getUrlVar('token');
-                }
-              </script>
-
               <form id="contact-form" class="contact-form">
                   <div class="row">
                       <div class="col-md-12">
@@ -28,6 +22,12 @@ layout: default
                       </div>
                   </div>
               </form>
+
+              <script>
+                if(getUrlVar('token')){
+                  document.getElementById('token').value = getUrlVar('token');
+                }
+              </script>
 
             </div>
          </div>
