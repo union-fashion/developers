@@ -12,55 +12,52 @@ layout: default
               <p>We have taken your authorizaton token and turned into the token you can use for making calls to the Union Fashon API. We've gone ahead and put your token into a Postman environment which you can copy and import into your Postman client to work with our APIs.</p>
 
               <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="name">Your API Token:</label>
+                          <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 300px">
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="name">Environment (copy and import into Postman):</label>
+                          <pre><code id="environment" style="width: 300px; height: 300px; overflow: auto; border: 1px solid #000"></code></pre>
+                      </div>
+                  </div>
+              </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="name">Your API Token:</label>
-                            <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 300px">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="name">Environment (copy and import into Postman):</label>
-                            <pre><code id="environment" style="width: 300px; height: 300px; overflow: auto; border: 1px solid #000"></code></pre>
-                        </div>
-                    </div>
-                </div>
+              <script>
+                if(getUrlVar('token')){
 
-                <script>
-                  if(getUrlVar('token')){
+                  let token = getUrlVar('token');
 
-                    let token = getUrlVar('token');
+                  document.getElementById('token').value = token;
 
-                    document.getElementById('token').value = token;
+                  environment = {};
+                  environment['id'] = 'dcbd4dbe-7000-402c-afeb-07a6070f8481';
+                  environment['name'] = 'Union Fashion API';
+                  environment['values'] = [];
 
-                    environment = {};
-                    environment['id'] = 'dcbd4dbe-7000-402c-afeb-07a6070f8481';
-                    environment['name'] = 'Union Fashion API';
-                    environment['values'] = [];
+                  value = {};
+                  value['key'] = 'baseUrl';
+                  value['value'] = 'https://api.union.fashion';
+                  value['enabled'] = true;
+                  environment['values'].push(value);
 
-                    value = {};
-                    value['key'] = 'baseUrl';
-                    value['value'] = 'https://api.union.fashion';
-                    value['enabled'] = true;
-                    environment['values'].push(value);
+                  value = {};
+                  value['key'] = 'api-key';
+                  value['value'] = token;
+                  value['enabled'] = true;
+                  environment['values'].push(value);
 
-                    value = {};
-                    value['key'] = 'api-key';
-                    value['value'] = token;
-                    value['enabled'] = true;
-                    environment['values'].push(value);
+                  document.getElementById('environment').innerHTML = JSON.stringify(environment, null, 2);
 
-                    document.getElementById('environment').innerHTML = JSON.stringify(environment, null, 2);
+                }
+              </script>
 
-                  }
-                </script>
-
-              </article>
-            </div>
+            </article>
          </div>
 
          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
