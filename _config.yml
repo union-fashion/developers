@@ -5,3 +5,18 @@ url: http://union.fashion
 
 # Build settings
 markdown: kramdown
+
+paginate: 12
+paginate_path: "/page/:num"
+permalink: /:year/:month/:day/:title/
+
+collections:
+  apis:
+    output: true
+    permalink: /apis/:path/
+
+defaults:
+  - scope:
+      type: apis
+    values:
+      layout: "apis"

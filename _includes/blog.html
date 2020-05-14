@@ -1,0 +1,37 @@
+<section class="single-block-wrapper section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+
+            <div class="single-post">
+
+               <div class="post-header mb-5 text-center">
+                  <div class="meta-cat">
+                    {% for tag in page.tags %}
+                     <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">{{ tag }} </a>
+                    {% endfor %}
+                  </div>
+                  <h2 class="post-title mt-2">{{ page.title }}</h2>
+                  <div class="post-meta">
+                     <span class="text-uppercase font-sm letter-spacing-1 mr-3">by Liam</span>
+                     <span class="text-uppercase font-sm letter-spacing-1">{{ page.date | date: "%-d %b %Y" }}</span>
+                  </div>
+                  <div class="post-featured-image mt-5">
+                     <img src="{{ page.image }}" class="img-fluid w-100" alt="featured-image">
+                  </div>
+               </div>
+               <div class="post-body">
+                  <div class="entry-content">{{ page.content }}</div>
+                  <div class="post-tags py-4">
+                    {% for tag in page.tags %}
+                     <a href="#">#{{ tag }}</a>
+                    {% endfor %}
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+      </div>
+   </div>
+</section>

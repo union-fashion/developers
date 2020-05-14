@@ -81,81 +81,89 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
            <article class="post-grid mb-5">
-              <h2 class="mb-1 mt-2 post-title">The Union Fashion Blog</h2>
-              <p>Where you will learn about doing API-first that is designed for a non-developer audience.</p>
-           </article>
-            <div class="row">
 
-              
-              <div class="col-lg-6">
-            		<article class="post-grid mb-5">
-            			<a class="post-thumb mb-4 d-block" href="http://localhost:4000/2020/05/10/getting-business-groups-involved-with-apis/">
-            				<img src="/images/community-postmanaut.png" alt="" class="img-fluid">
-            			</a>
-            			<span class="font-sm text-color letter-spacing text-uppercase post-meta font-extra">Experience</span>
-            			<h3 class="post-title mb-1 mt-2"><a href="http://localhost:4000/2020/05/10/getting-business-groups-involved-with-apis/">Business API Stakeholders</a></h3>
+              <h2 class="mb-1 mt-2 post-title"><a href="#">Developer Account</a></h2>
+              <p>We have taken your authorizaton token and turned into the token you can use for making calls to the Union Fashon API. We've gone ahead and put your token into a Postman environment which you can copy and import into your Postman client to work with our APIs.</p>
 
-            			<div class="post-content mt-4">
-            				<p><p>APIs are a very technical and often abstract element of doing business, but is something that should be accessible both a technical audience, as well as more mainstream business stakeholders. The health and use of APIs is something that impacts .. <a href="http://localhost:4000/2020/05/10/getting-business-groups-involved-with-apis/">read more</a></p>
-            			</div>
-            		</article>
-            	</div>
-              
-              <div class="col-lg-6">
-            		<article class="post-grid mb-5">
-            			<a class="post-thumb mb-4 d-block" href="http://localhost:4000/2020/05/09/hello-world/">
-            				<img src="/images/postman-logo.png" alt="" class="img-fluid">
-            			</a>
-            			<span class="font-sm text-color letter-spacing text-uppercase post-meta font-extra">Experience</span>
-            			<h3 class="post-title mb-1 mt-2"><a href="http://localhost:4000/2020/05/09/hello-world/">Hello World Union Fashion</a></h3>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="name"><strong>Your API Token:</strong></label>
+                          <input class="form-control form-control-name" name="token" id="token" type="text" style="width: 600px">
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="name"><strong>Environment (copy and import into Postman):</strong></label>
+                          <pre id="environment" style="width: 600px; height: 500px; overflow: auto;"></pre>
+                      </div>
+                  </div>
+              </div>
 
-            			<div class="post-content mt-4">
-            				<p><p>Welcome to Union Fashion, an API-first space inspired e-commerce implementation from Postman. The project was born out of our solutions group, but is being pushed forward as part of a public effort to evolve it as a reference implementation for .. <a href="http://localhost:4000/2020/05/09/hello-world/">read more</a></p>
-            			</div>
-            		</article>
-            	</div>
-              
+              <script>
+                if(getUrlVar('token')){
 
-            </div>
+                  let token = getUrlVar('token');
 
+                  document.getElementById('token').value = token;
+
+                  environment = {};
+                  environment['id'] = 'dcbd4dbe-7000-402c-afeb-07a6070f8481';
+                  environment['name'] = 'Union Fashion API';
+                  environment['values'] = [];
+
+                  value = {};
+                  value['key'] = 'baseUrl';
+                  value['value'] = 'https://api.union.fashion';
+                  value['enabled'] = true;
+                  environment['values'].push(value);
+
+                  value = {};
+                  value['key'] = 'api-key';
+                  value['value'] = token;
+                  value['enabled'] = true;
+                  environment['values'].push(value);
+
+                  document.getElementById('environment').innerHTML = JSON.stringify(environment, null, 2);
+
+                }
+              </script>
+
+             <p>Right now we are just offering API keys for working with the API, and as we evolve we will be adding more resources like usage charts, and other helpful tooling.</p>
+
+            </article>
          </div>
 
          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="sidebar sidebar-right">
                <div class="sidebar-wrap mt-5 mt-lg-0">
 
-                 
-
-
-
-
-
-
-<div class="sidebar-widget category mb-5">
-   <h4 class="text-center widget-title">Tags</h4>
-   <ul class="list-unstyled" style="text-align: left;">
-     
-
-     
-     
-
-      <li class="align-items-center d-flex justify-content-between">
-         <a href="/blog/business/">Business</a>
-         <span>1</span>
-      </li>
-      
-
-     
-     
-
-      <li class="align-items-center d-flex justify-content-between">
-         <a href="/blog/communication/">Communication</a>
-         <span>1</span>
-      </li>
-      
-   </ul>
-</div>
-
+                  <div class="sidebar-widget mb-5 ">
+                     <h4 class="text-center widget-title">Platform</h4>
+                     <div class="media border-bottom py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Home</span>
+                           <h4 ><a href="#">The default README for all APIs.</a></h4>
+                        </div>
+                     </div>
+                     <div class="media border-bottom py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Infrastructure</span>
+                           <h4 ><a href="#">Explore infrastructure collections.</a></h4>
+                        </div>
+                     </div>
+                     <div class="media py-3 sidebar-post-item">
+                        <div class="media-body">
+                           <a href="#"><img class="mr-4" src="../images/tools.png" alt=""></a>
+                           <span class="text-muted letter-spacing text-uppercase font-sm">Operations</span>
+                           <h4 ><a href="#">Explore operational collections.</a></h4>
+                        </div>
+                     </div>
+                  </div>
 
                </div>
             </div>
