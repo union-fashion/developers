@@ -1,7 +1,7 @@
 ---
 name: Baskets
 description: This is the API for baskets that are used as part of e-commerce on websites.
-image: http://union.fashion/images/baskets.png
+image: http://union.fashion/images/api.png
 tags:
 - Baskets
 - Commerce
@@ -85,3 +85,4 @@ maintainers:
   x-twitter: kinlane
   x-github: kinlane
   email: mail@union.fashion
+---

@@ -1,7 +1,7 @@
 ---
 name: Products
 description: This is the API for the Union Fashion product catalog.
-image: http://union.fashion/images/products.png
+image: http://union.fashion/images/api.png
 tags:
 - Products
 created: '2020-05-13'

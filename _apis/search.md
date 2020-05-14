@@ -1,7 +1,7 @@
 ---
 name: Search
 description: This is the API for searching across Union Fashion resources.
-image: http://union.fashion/images/search.png
+image: http://union.fashion/images/api.png
 tags:
 - Search
 created: '2020-05-13'
@@ -79,3 +79,4 @@ maintainers:
   x-twitter: kinlane
   x-github: kinlane
   email: mail@union.fashion
+---

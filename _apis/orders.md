@@ -1,7 +1,7 @@
 ---
 name: Orders
 description: This is the API for the Union Fashion product catalog.
-image: http://union.fashion/images/orders.png
+image: http://union.fashion/images/api.png
 tags:
 - Orders
 created: '2020-05-13'
@@ -81,3 +81,4 @@ maintainers:
   x-twitter: kinlane
   x-github: kinlane
   email: mail@union.fashion
+---

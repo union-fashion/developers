@@ -1,7 +1,7 @@
 ---
 name: Persons
 description: This is the API for the Union Fashion persons system.
-image: http://union.fashion/images/persons.png
+image: http://union.fashion/images/api.png
 tags:
 - Users
 created: '2020-05-13'
@@ -46,7 +46,7 @@ apis:
     url: https://raw.githubusercontent.com/union-fashion/persons/master/persons-venvironment-1.json    
   - type: x-documentation
     x-name: Documentation
-    url: https://union-fashion.postman.co/collections/10394726-c2e56d9d-b2d4-4116-ae07-a150d168e1e2/publish
+    url: https://documenter.getpostman.com/view/10394726/SzYXXzaC?version=latest
   - type: x-contract-testing-monitor
     x-name: Contract Testing Monitor
     url: https://union-fashion.postman.co/monitors/1ea730d4-ad4f-41a0-825d-69d50a700ff0
@@ -81,3 +81,4 @@ maintainers:
   x-twitter: kinlane
   x-github: kinlane
   email: mail@union.fashion
+---
