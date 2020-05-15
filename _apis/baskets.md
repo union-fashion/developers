@@ -1,6 +1,6 @@
 ---
 name: Baskets
-description: This is the API for baskets that are used as part of e-commerce on websites.
+description: This is the API for baskets that are used as part of e-commerce on websites and mobile applications. Providing customers with the ability to add products to a wish list or a cart if they intend on purchasing the items, allowing them to put things in the basket and checkout whenever they want.
 image: http://union.fashion/images/api.png
 tags:
 - Baskets

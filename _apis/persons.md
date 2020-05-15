@@ -1,6 +1,6 @@
 ---
 name: Persons
-description: This is the API for the Union Fashion persons system.
+description: This is the API for working with the people that use Union Fashion. Our goal is to engage with as many different people as possible helping educate about the API lifecycle, as well as Postman. We will be tracking as little information as possible, but will use a central for all our keeping track of all the people we engage with.
 image: http://union.fashion/images/api.png
 tags:
 - Users

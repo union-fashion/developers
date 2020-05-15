@@ -1,6 +1,6 @@
 ---
 name: Search
-description: This is the API for searching across Union Fashion resources.
+description: This is the API for searching across Union Fashion resources, providing a single place you can go to search across everything we are offering. Allowing us to keep everything on the Union Platform easy to find, and discoverable by default.
 image: http://union.fashion/images/api.png
 tags:
 - Search
