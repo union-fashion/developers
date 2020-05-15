@@ -6,30 +6,294 @@
             <div class="single-post">
 
                <div class="post-header mb-5 text-center">
-                  <div class="meta-cat">
+                  <div class="meta-cat">|
                     {% for tag in page.tags %}
-                     <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">{{ tag }} </a>
+                     <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">{{ tag }}</a> |
                     {% endfor %}
                   </div>
                   <h2 class="post-title mt-2">{{ page.name }}</h2>
                   <div class="post-meta">
-                     <span class="text-uppercase font-sm letter-spacing-1">{{ page.created | date: "%-d %b %Y" }}</span>
-                     <span class="text-uppercase font-sm letter-spacing-1">{{ page.modified | date: "%-d %b %Y" }}</span>
+                     <span class="text-uppercase font-sm letter-spacing-1">created: {{ page.created | date: "%-d %b %Y" }}</span><br>
+                     <span class="text-uppercase font-sm letter-spacing-1">modified: {{ page.modified | date: "%-d %b %Y" }}</span>
                   </div>
                   <div class="post-featured-image mt-5">
-                     <img src="{{ page.image }}" class="img-fluid w-100" alt="featured-image">
+                     <img src="{{ page.image }}" alt="featured-image" style="width: 350px;">
                   </div>
                </div>
+
                <div class="post-body">
                   <div class="entry-content">{{ page.description }}</div>
-                  <div class="post-tags py-4">
+                  <div class="post-tags py-4"><strong>Tags:</strong>
                     {% for tag in page.tags %}
                      <a href="#">#{{ tag }}</a>
                     {% endfor %}
                   </div>
                </div>
+               {% assign team_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-postman-team' %}
+                     {% assign team_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               {% assign workspace_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-postman-workspace' %}
+                     {% assign workspace_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               {% assign github_repo_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-github-repository' %}
+                     {% assign github_repo_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               <div class="post-body">
+                 <h3 class="post-title mt-2">Organizational</h3>
+                 <table width="75%" cellpadding="3" cellspacing="2" align="center">
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-team.png" width="125"></td>
+                     <td><a href="{{ team_url }}"><strong>Team Page</strong></a> - The team behind this API, access is required to view team page.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-workspace.png" width="125"></td>
+                     <td><a href="{{ workspace_url }}"><strong>Workspace Page</strong></a> - The dedicated workspaces behind the development of this API, access is required to view team page.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/github-logo.png" width="125"></td>
+                     <td><a href="{{ github_repo_url }}"><strong>GitHub Repo</strong></a> - This is the dedicated repo behind this API, providing a single location where you can find information and artifacts.</td>
+                   </tr>
+                 </table>
+               </div>
+
+               {% assign openapi_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-openapi' %}
+                     {% assign openapi_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               {% assign postman_collection_url = "none" %}
+               {% assign postman_collection_id = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-postman-collection' %}
+                     {% assign postman_collection_url = property.url %}
+                     {% assign postman_collection_id = postman_collection_url | replace: "https://www.getpostman.com/collections/", "" %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               {% assign postman_environent_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-postman-environment' %}
+                     {% assign postman_environent_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               <div class="post-body">
+                 <h3 class="post-title mt-2">Artifacts</h3>
+                 <table width="75%" cellpadding="3" cellspacing="2" align="center">
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/openapi.png" width="125"></td>
+                     <td><a href="{{ openapi_url }}"><strong>OpenAPI</strong></a> - This is the OpenAPI for this API, providing a single source of truth regarding what this API does. All collections are derived from this OpenAPI contract, and kept in sync with it using validation.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-collections.png" width="125"></td>
+                     <td><a href="{{ postman_collection_url }}"><strong>Collection</strong></a> - This is the Postman collection for this API, allowing consumers to quickly put to work in their clients, pipelines, and other tooling, helping drive multiple stops along the lifecycle.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-environments.png" width="125"></td>
+                     <td><a href="{{ postman_environent_url }}"><strong>Environment</strong></a> - This is the environment for this API, providing the base url, api key, an dother essential secrets and variables that can be used when making requests to this API via the collection provided.</td>
+                   </tr>
+                 </table>
+               </div>
+
+               {% assign documenation_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-documentation' %}
+                     {% assign documenation_url = property.url %}
+                   {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               <div class="post-body">
+                 <h3 class="post-title mt-2">Consume</h3>
+                 <table width="75%" cellpadding="3" cellspacing="2" align="center">
+                   <tr>
+                     <td width="175" align="center" valign="middle">
+                       <a href="{{ documentation_url }}"><img style="margin-top: -22px;" src="https://kinlane-productions.s3.amazonaws.com/postman/postman-documentation-button.png" width="120">
+                     </td>
+                     <td><a href="{{ openapi_url }}"><strong>Documentation</strong></a> - This is the documenation available for this API, which is generated fro the OpenAPI for this API, but maintained separately to publish documentation and provide mock servers for this API.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle">
+                       <div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="{{ collection_id }}"></div>
+                        <script type="text/javascript">
+                          (function (p,o,s,t,m,a,n) {
+                            !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+                            !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+                              (n = o.createElement("script")),
+                              (n.id = s+t), (n.async = 1), (n.src = m), n
+                            ));
+                          }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+                        </script>
+                     </td>
+                     <td><a href="{{ postman_collection_url }}"><strong>Run in Postman</strong></a> - This is a Run in Postman button which allows you to instantly load this API into your local Postman client. You will need to signup or login and obtain an API key before you can make a call, but this should help you get up and running.</td>
+                   </tr>
+                 </table>
+               </div>
+
+               {% for api in page.apis %}
+                {% assign contract_testing = api.x-results.contract-testing %}
+                {% assign performance_testing = api.x-results.performance-testing %}
+                {% assign security_testing = api.x-results.security-testing %}
+               {% endfor %}
+
+               <div class="post-body">
+
+                 {% if contract_testing %}
+                 <h3 class="post-title mt-2">Latest Contract Testing</h3>
+                 {% for test in contract_testing %}
+                    <div style="padding-left: 50px;"
+                    <h4>{{ "14/5/2020 @ 17:00:00" | date: "%b %-d %Y" }}</h4>
+                    <ul style="padding-top: 10px;">
+                    {% for test_entry in test[1] %}
+                       <li>{{ test_entry[0] }}
+                         <ul>
+                         {% for question in test_entry[1] %}
+                            <li>{{ question[0] }} {% if question[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                         {% endfor %}
+                         </ul>
+                       </li>
+                    {% endfor %}
+                    </ul>
+                    </div>
+                 {% endfor %}
+                 {% endif %}
+
+                 {% if performance_testing %}
+                 <h3 class="post-title mt-2">Latest Performance Testing</h3>
+                 {% for test in performance_testing %}
+                    <div style="padding-left: 50px;"
+                    <h4>{{ "14/5/2020 @ 17:00:00" | date: "%b %-d %Y" }}</h4>
+                    <ul style="padding-top: 10px;">
+                    {% for test_entry in test[1] %}
+                       <li>{{ test_entry[0] }}
+                         <ul>
+                         {% for question in test_entry[1] %}
+                            <li>{{ question[0] }}: question[1]</li>
+                         {% endfor %}
+                         </ul>
+                       </li>
+                    {% endfor %}
+                    </ul>
+                    </div>
+                 {% endfor %}
+                 {% endif %}
+
+                 {% if security_testing %}
+                 <h3 class="post-title mt-2">Latest Security Testing</h3>
+                 {% for test in security_testing %}
+                    <div style="padding-left: 50px;"
+                    <h4>{{ "14/5/2020 @ 17:00:00" | date: "%b %-d %Y" }}</h4>
+                    <ul style="padding-top: 10px;">
+                    {% for test_entry in test[1] %}
+                       <li>{{ test_entry[0] }}
+                         <ul>
+                         {% for question in test_entry[1] %}
+                            <li>{{ question[0] }} {% if question[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                         {% endfor %}
+                         </ul>
+                       </li>
+                    {% endfor %}
+                    </ul>
+                    </div>
+                 {% endfor %}
+                 {% endif %}
+
+                </div>
+
+                {% for api in page.apis %}
+                 {% assign governance_testing = api.x-results.governance-testing %}
+                {% endfor %}
+
+                {% if governance_testing %}
+                <div class="post-body">
+                  <h3 class="post-title mt-2">Latest Governance</h3>
+                  {% for test in governance_testing %}
+                     <div style="padding-left: 50px;"
+                     <h4>{{ "14/5/2020 @ 17:00:00" | date: "%b %-d %Y" }}</h4>
+                     <ul style="padding-top: 10px;">
+                     {% for test_entry in test[1] %}
+                        <li>{{ test_entry[0] }}
+                          <ul>
+                          {% for question_one in test_entry[1] %}
+                            {% if question_one.first %}
+                              <li>{{ question_one[0] }} {% assign q_size = question_one[1] | size %} {% if q_size == 0 %}{% if question_one[1] == true %}&#9989;{% else %}&#10060;{% endif %}{% endif %}
+                                <ul>
+                                {% for question_two in question_one[1] %}
+                                  {% if question_two.first %}
+                                    <li>{{ question_two[0] }} {% assign q_size = question_two[1] | size %} {% if q_size == 0 %}{% if question_two[1] == true %}&#9989;{% else %}&#10060;{% endif %}{% endif %}
+                                      <ul>
+                                      {% for question_three in question_two[1] %}
+                                        {% if question_three.first %}
+                                          <li>{{ question_three[0] }} {% assign q_size = question_three[1] | size %} {% if q_size == 0 %}{% if question_three[1] == true %}&#9989;{% else %}&#10060;{% endif %}{% endif %}
+                                            <ul>
+                                            {% for question_four in question_three[1] %}
+                                              {% if question_four.first %}
+      ANY MORE!!!!!!
+                                              {% else %}
+                                               <li>{{ question_four[0] }} {% if question_four[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                                              {% endif %}
+                                            {% endfor %}
+                                            </ul>
+                                          </li>
+                                        {% else %}
+                                         <li>{{ question_three[0] }} {{ question_three[1] }} {% if question_three[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                                        {% endif %}
+                                      {% endfor %}
+                                      </ul>
+                                    </li>
+                                  {% else %}
+                                   <li>{{ question_two[0] }} {{ question_two[1] }} {% if question_two[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                                  {% endif %}
+                                {% endfor %}
+                                </ul>
+                              </li>
+                            {% else %}
+                             <li>{{ question_one[0] }} {% if question_one[1] == true %}&#9989;{% else %}&#10060;{% endif %}</li>
+                            {% endif %}
+                          {% endfor %}
+                          </ul>
+                        </li>
+                     {% endfor %}
+                     </ul>
+                     </div>
+                  {% endfor %}
+                 </div>
+                 {% endif %}
+
             </div>
 
+         </div>
+
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="sidebar sidebar-right">
+               <div class="sidebar-wrap mt-5 mt-lg-0">
+
+                {% include lead-sidebar.html %}
+                {% include operation-sidebar.html %}
+                {% include apis-tags-sidebar.html %}
+
+               </div>
+            </div>
          </div>
 
       </div>

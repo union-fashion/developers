@@ -84,54 +84,9 @@ layout: default
             <div class="sidebar sidebar-right">
                <div class="sidebar-wrap mt-5 mt-lg-0">
 
-                  <div class="sidebar-widget about mb-5 text-center p-3">
-                     <div class="about-author">
-                        <img src="images/postmanaut-assembling-legos.png" alt="" class="img-fluid">
-                     </div>
-                     <h4 class="mb-0 mt-4">Mishka</h4>
-                     <p>API Lead</p>
-                     <p>My name is Mishka, and I am responsible for helping you in your API journey here at Union Fashion.</p>
-                  </div>
-
-                  <div class="sidebar-widget mb-5 ">
-                     <h4 class="text-center widget-title">Platform</h4>
-                     <div class="media border-bottom py-3 sidebar-post-item">
-                        <div class="media-body">
-                           <span class="text-muted letter-spacing text-uppercase font-sm">Home</span>
-                           <h4 ><a href="blog-single.html">The default README for all APIs.</a></h4>
-                        </div>
-                     </div>
-                     <div class="media border-bottom py-3 sidebar-post-item">
-                        <div class="media-body">
-                           <span class="text-muted letter-spacing text-uppercase font-sm">Infrastructure</span>
-                           <h4 ><a href="blog-single.html">Explore infrastructure collections.</a></h4>
-                        </div>
-                     </div>
-                     <div class="media py-3 sidebar-post-item">
-                        <div class="media-body">
-                           <span class="text-muted letter-spacing text-uppercase font-sm">Operations</span>
-                           <h4 ><a href="blog-single.html">Explore operational collections.</a></h4>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="sidebar-widget category mb-5">
-                     <h4 class="text-center widget-title">Categories</h4>
-                     <ul class="list-unstyled">
-                        <li class="align-items-center d-flex justify-content-between">
-                           <a href="#">Commerce</a>
-                           <span>3</span>
-                        </li>
-                        <li class="align-items-center d-flex justify-content-between">
-                           <a href="#">Customers</a>
-                           <span>1</span>
-                        </li>
-                        <li class="align-items-center d-flex justify-content-between">
-                           <a href="#">Discovery</a>
-                           <span>1</span>
-                        </li>
-                     </ul>
-                  </div>
+                {% include lead-sidebar.html %}
+                {% include operation-sidebar.html %}
+                {% include apis-tags-sidebar.html %}
 
                </div>
             </div>

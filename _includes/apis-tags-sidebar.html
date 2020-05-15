@@ -1,0 +1,40 @@
+{% assign rawtags = "" %}
+{% for api in site.apis %}
+	{% assign ttags = api.tags | join:'|' | append:'|' %}
+	{% assign rawtags = rawtags | append:ttags %}
+{% endfor %}
+{% assign rawtags = rawtags | split:'|' | sort %}
+
+{% assign tags = "" %}
+{% for tag in rawtags %}
+	{% if tag != "" %}
+		{% if tags == "" %}
+			{% assign tags = tag | split:'|' %}
+		{% endif %}
+		{% unless tags contains tag %}
+			{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
+<div class="sidebar-widget category mb-5">
+   <h4 class="text-center widget-title">Tags</h4>
+   <ul class="list-unstyled" style="text-align: left;">
+     {% for tag in tags %}
+
+     {% assign count = 0 %}
+     {% for api in site.apis %}
+      {% for count_tag in api.tags %}
+        {% if count_tag == tag %}
+          {% assign count = count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+     {% endfor %}
+
+      <li class="align-items-center d-flex justify-content-between">
+         <a href="/apis/{{ tag | downcase }}/">{{ tag }}</a>
+         <span>{{ count }}</span>
+      </li>
+      {% endfor %}
+   </ul>
+</div>
