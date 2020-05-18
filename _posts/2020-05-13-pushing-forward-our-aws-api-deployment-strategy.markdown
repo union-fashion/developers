@@ -128,3 +128,10 @@ To help address concerns amongst existing teams, this work does not dictate a si
 2. **Document Pattern** - Produce an end to end Postman collection for your API deployment pattern exhaustively defining each individual step.
 
 If you choose to adopt an existing pattern, much of the work will already be done for you. If you are determined that your API deployment pattern is the right choice, then all you need to do is document it, and make it something that other teams can also implement. Allowing API deployment at Union Fashion to remain agnostic about platforms, tooling, and programming languages, while ensuring that we can consistently deliver high quality APIs that continue to meet business objectives at scale. Making sure we are all on the same page when it comes to API deployment, moving us out of the dark ages we’ve existed in for about 20 years when it comes to how APIs are actually deployed into production.
+
+Here are the links to the documentation for each of the current AWS API deployment patterns, with the second one being the most advanced, and providing the foundation for this work.
+
+- [AWS API Gateway + DynamoDB](https://github.com/union-fashion/operations#deployment)
+- [AWS API Gateway + Lambda + RDS](https://github.com/union-fashion/operations#deployment).
+
+You can access all of this information under [the operations GitHub repository](https://github.com/union-fashion/operations), and the [issues for API deployment work under this repository](https://github.com/union-fashion/operations/issues?q=is%3Aissue+is%3Aopen+label%3Adeployment), labeled as deployment.
