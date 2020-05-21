@@ -150,6 +150,39 @@
                  </table>
                </div>
 
+               {% assign activity_url = "none" %}
+               {% assign history_url = "none" %}
+               {% for api in page.apis %}
+                 {% for property in api.properties %}
+                   {% if property.type == 'x-postman-activity' %}
+                     {% assign activity_url = property.url %}
+                   {% endif %}
+                 {% if property.type == 'x-postman-history' %}
+                   {% assign history_url = property.url %}
+                 {% endif %}
+                 {% if property.type == 'x-postman-activity' %}
+                   {% assign activity_url = property.url %}
+                 {% endif %}
+                 {% endfor %}
+               {% endfor %}
+               <div class="post-body">
+                 <h3 class="post-title mt-2">Artifacts</h3>
+                 <table width="75%" cellpadding="3" cellspacing="2" align="center">
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/openapi.png" width="125"></td>
+                     <td><a href="{{ activity_url }}"><strong>Activity</strong></a> - The activity around each API, providing details of what structural and operational changes have been made to an API, its workspace, and other important elements about what is happening.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-collections.png" width="125"></td>
+                     <td><a href="{{ history_url }}"><strong>History</strong></a> - The history of requests made across collections that are generated from APIs, and are published for mocks, documentation, and used to define contract, integration, and other testing.</td>
+                   </tr>
+                   <tr>
+                     <td width="175" align="center" valign="middle"><img src="/images/postman-environments.png" width="125"></td>
+                     <td><a href="{{ github_repo_url }}/issues"><strong>Issues</strong></a> - All of the issues that are tracked for this API, leveraging GitHub issues as the central feedback loop for features, bugs, enhancements, and other relevant aspects of the feedback loop.</td>
+                   </tr>
+                 </table>
+               </div>
+
                {% for api in page.apis %}
                 {% assign contract_testing = api.x-results.contract-testing %}
                 {% assign performance_testing = api.x-results.performance-testing %}
